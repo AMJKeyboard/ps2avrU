@@ -160,6 +160,50 @@ PROGMEM const uchar custom_hid_report[] = {
     0x95, 0x01,                    //   REPORT_COUNT (1)
     0x81, 0x00,                    //   INPUT (Data,Array,Abs)
     0xc0,                          // END_COLLECTION
+
+/*     NKRO */
+    0x05, 0x01,   // USAGE_PAGE (Generic Desktop)
+    0x09, 0x06,   // USAGE (Keyboard)
+    0xa1, 0x01,   // COLLECTION (Application)
+
+    0x85, REPORT_ID_NKRO,         //   REPORT_ID (5)
+
+    /* modifiers */
+    0x05, 0x07,   //   USAGE_PAGE (Keyboard)
+    0x19, 0xe0,   //   USAGE_MINIMUM (Keyboard LeftControl)
+    0x29, 0xe7,   //   USAGE_MAXIMUM (Keyboard Right GUI)
+    0x15, 0x00,   //   LOGICAL_MINIMUM (0)
+    0x25, 0x01,   //   LOGICAL_MAXIMUM (1)
+    0x95, 0x08,   //   REPORT_COUNT (8)
+    0x75, 0x01,   //   REPORT_SIZE (1)
+    0x81, 0x02,   //   INPUT (Data,Var,Abs)
+    /* modifiers end */
+
+    /* leds */
+    0x95, 0x05,   //   REPORT_COUNT (5)
+    0x75, 0x01,   //   REPORT_SIZE (1)
+    0x05, 0x08,   //   USAGE_PAGE (LEDs)
+    0x19, 0x01,   //   USAGE_MINIMUM (Num Lock)
+    0x29, 0x05,   //   USAGE_MAXIMUM (Kana)
+    0x91, 0x02,   //   OUTPUT (Data,Var,Abs)
+    0x95, 0x01,   //   REPORT_COUNT (1)
+    0x75, 0x03,   //   REPORT_SIZE (3)
+    0x91, 0x03,   //   OUTPUT (Cnst,Var,Abs)
+    /* leds end */
+
+    /* keyboard body */
+    0x05, 0x07,   //   USAGE_PAGE (Keyboard)
+    0x19, 0x00,   //   USAGE_MINIMUM (Reserved (no event indicated))
+    0x29, (NKRO_EPSIZE-1)*8-1,   //   USAGE_MAXIMUM
+    0x15, 0x00,   //   LOGICAL_MINIMUM (0)
+    0x25, 0x01,   //   LOGICAL_MAXIMUM (1)
+    0x95, (NKRO_EPSIZE-1)*8,   //   REPORT_COUNT (6)
+    0x75, 0x01,   //   REPORT_SIZE (1)
+    0x15, 0x00,   //   LOGICAL_MINIMUM (0)
+    0x26, 0xFF, 0x00,  //   LOGICAL_MAXIMUM (255)
+    0x81, 0x02,   //   INPUT (Data,Var,Abs)
+    /* keyboard body end */
+    0xC0                           // END_COLLECTION
 };
 
 

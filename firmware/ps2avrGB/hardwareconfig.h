@@ -7,7 +7,9 @@
 #define REPORT_ID_BOOT      2
 #define REPORT_ID_SYSTEM    4
 #define REPORT_ID_CONSUMER  3
-#define REPORT_ID_MOUSE     5
+#define REPORT_ID_NKRO      5
+
+#define NKRO_EPSIZE       16
 
 
 /* ----------------------- PS/2 ------------------------ */
